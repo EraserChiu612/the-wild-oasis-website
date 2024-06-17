@@ -154,8 +154,16 @@ export async function getSettings() {
 // 	}
 // }
 
-export function getCountries() {
-	const countries = JSON.parse(fs.readFileSync('public/countries.json'))
+// export function getCountries() {
+// 	const countries = JSON.parse(fs.readFileSync('public/countries.json'))
+// 	return countries
+// }
+export async function getCountries() {
+	const res = await fetch('/countries.json')
+	if (!res.ok) {
+		throw new Error('Failed to fetch countries')
+	}
+	const countries = await res.json()
 	return countries
 }
 
