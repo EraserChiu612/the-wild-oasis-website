@@ -163,10 +163,10 @@ export async function getCountries() {
 	return countries
 }
 
-export function getCountries() {
-	const countries = JSON.parse(fs.readFileSync('countries.json'))
-	return countries
-}
+// export function getCountries() {
+// 	const countries = JSON.parse(fs.readFileSync('countries.json'))
+// 	return countries
+// }
 
 
 /////////////
