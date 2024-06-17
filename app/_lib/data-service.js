@@ -3,6 +3,8 @@ import { eachDayOfInterval } from 'date-fns'
 import { supabase } from './supabase'
 
 import fs from 'fs'
+import path from 'path'
+
 
 /////////////
 // GET
@@ -153,6 +155,13 @@ export async function getSettings() {
 // 		throw new Error('Could not fetch countries')
 // 	}
 // }
+export async function getCountries() {
+	const filePath = path.join(process.cwd(), 'public', 'countries.json')
+	const fileContents = fs.readFileSync(filePath, 'utf8')
+	const countries = JSON.parse(fileContents)
+
+	return countries
+}
 
 export function getCountries() {
 	const countries = JSON.parse(fs.readFileSync('countries.json'))
